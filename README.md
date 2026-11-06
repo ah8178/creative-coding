@@ -8,3 +8,7 @@ My p5.js coursework, organized by week. Open each week's `index.html` with Live 
 - [Week 4 — Iterative SVG](week4/index.html)
 - [Week 5 — Clocks](week5/index.html)
 - [Week 6 — Abstract Clock](week6/index.html)
+- [Week 7 — Projection Mapping](week7/index.html)
+- [Week 8 — Interactivity Exploration](week8/index.html)
+- [Week 9 — Audioreactive Visualization](week9/index.html)
+
