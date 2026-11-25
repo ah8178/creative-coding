@@ -1,0 +1,9 @@
+# Week 11 — Reading Reflection: “The Point of Collection”
+
+Mimi Onuoha’s “The Point of Collection” made me think about data as something that is shaped before it ever becomes a chart or a dataset. One idea that stood out is that the way information is collected directly affects what the final dataset can show. Her comparison between hate-crime statistics gathered from police reports and those gathered through victim surveys shows how two collection methods can produce very different pictures of the same issue. I connected this to my NYC 311 visualization because the data only represents problems that people chose and were able to report through the city’s system. It does not automatically include every problem in a neighborhood, or people who do not know about 311 or cannot easily use it. Another point I found important is that datasets can continue to be used long after the original reason for collecting them has changed. This raises questions about who controls the information and what new conclusions might be drawn from it later. Onuoha also explains that combining datasets can reveal information that people never intended to share, which makes data collection a question of power and privacy rather than just technical accuracy. The reading changed how I think about data visualization: a clear chart is not necessarily an objective chart, because the choices behind collecting and categorizing the data are already part of the story. For my project, I want to make those limitations visible instead of presenting 311 counts as a complete description of New York City.
+
+## Source
+Mimi Onuoha, [“The Point of Collection,” Data & Society, February 10, 2016](https://datasociety.net/research-library/the-point-of-collection/).
+
+## Note
+This is a draft reflection. Review it against the examples discussed in class and add a specific example from the instructor's notes before submitting.
