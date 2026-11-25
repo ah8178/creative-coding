@@ -3,31 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Week 12 — Data Visualization Continuation</title>
+  <title>Week 12 — Monthly Data Visualization</title>
+  <script src="https://cdn.jsdelivr.net/npm/p5@2.3.2/lib/p5.min.js"></script>
   <style>
-    body { margin: 0; padding: 32px 22px; background: #f2eee5; color: #252820; font: 16px/1.6 Arial, sans-serif; }
-    main { max-width: 760px; margin: auto; }
-    h1 { font-size: 25px; }
-    a { color: #315d50; }
-    li { margin: 8px 0; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f2eee5; color: #252820; font: 14px/1.5 Arial, sans-serif; }
+    header { padding: 18px 22px 12px; max-width: 1040px; margin: auto; }
+    h1 { margin: 0 0 5px; font-size: 21px; }
+    p { margin: 0; color: #5e6259; }
+    main { display: flex; justify-content: center; padding: 0 12px 20px; }
+    canvas { max-width: 100%; height: auto !important; border-radius: 10px; }
   </style>
 </head>
 <body>
-  <main>
-    <p>WEEK 12 · CONTINUATION</p>
-    <h1>Data Visualization — continued</h1>
-    <p>This week extends the Week 11 data portrait. Continue refining the question, data handling, visual encoding, and interpretation rather than treating this as a separate new assignment.</p>
-    <h2>Current project</h2>
-    <p><a href="../week11/index.html">Open Week 11 — A City of Requests</a></p>
-    <h2>Extension checklist</h2>
-    <ul>
-      <li>Check the API query and explain the date range and fields you selected.</li>
-      <li>Try one additional comparison, filter, or time-based view.</li>
-      <li>Document missing, ambiguous, or unevenly reported data.</li>
-      <li>Improve labels, hierarchy, and readability.</li>
-      <li>Update your written interpretation and source attribution.</li>
-    </ul>
-    <p><strong>Due:</strong> December 2, 2026 (per the course agenda extension).</p>
-  </main>
+  <header>
+    <h1>WEEK 12 · A YEAR OF REPORTED CITY NEEDS</h1>
+    <p>Compare monthly NYC 311 service-request totals. Select a borough with the controls or keys 1–5; press A to compare all five.</p>
+  </header>
+  <main><div id="sketch"></div></main>
+  <script src="sketch.js"></script>
 </body>
 </html>
