@@ -1,0 +1,6 @@
+* { box-sizing: border-box; }
+body { margin: 0; padding: 28px; background: #f1eee7; color: #26332d; font: 16px/1.5 system-ui, sans-serif; }
+main { max-width: 900px; margin: auto; }
+h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 8px; }
+#status, .note { color: #64736a; }
+canvas { display: block; width: 100% !important; height: auto !important; border-radius: 16px; box-shadow: 0 12px 35px #26332d20; }

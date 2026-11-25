@@ -1,0 +1,7 @@
+# Week 12 — The Point of Collection
+
+## Reading reflection
+Mimi Onuoha's *The Point of Collection* made me think about how data is gathered and why certain information is considered important enough to collect. I found the idea of missing datasets particularly interesting because the absence of information can reveal as much as the information that is available. We often assume that data represents reality objectively, but the process of collecting it involves decisions about what should be measured and what can be ignored. This made me question who gets to decide which information is valuable and whose experiences are left out. I can connect this idea to my data visualization project because public transportation data might show passenger numbers and movement patterns, but it may not explain the personal experiences of the people travelling. A dataset can provide a useful overview while still leaving important details invisible. I think this reading demonstrates that creative coding and data visualization should not only focus on presenting information but also question how that information was collected in the first place.
+
+## Connection to my project
+The subway dataset gives me numerical information about ridership, but it does not explain why people are travelling, what their journeys are like, or which experiences are missing from the dataset. This is a reminder to describe the limits of my visualization rather than presenting it as the complete story of public transportation.
