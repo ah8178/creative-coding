@@ -1,31 +1,37 @@
 # Week 13 — Working with Models
 
-**Course brief:** Train your own classifier with [Google Teachable Machine](https://teachablemachine.withgoogle.com/) using image, sound, or body-pose data, then incorporate it into a creative sketch.
+## Project: Model Garden
 
-## Starter concept: Model Garden
+This sketch is a starter interface for the course assignment. It uses an image classifier trained in Google Teachable Machine and webcam input. The predicted class changes the hue of a generative field; confidence affects the scale and movement of particles.
 
-This starter uses an **image classifier** and webcam input. The predicted class determines the visual field's hue; confidence influences the scale and movement of particles.
+## Required personal work
+1. Create an Image Project in [Teachable Machine](https://teachablemachine.withgoogle.com/).
+2. Choose at least two classes that make sense for your concept.
+3. Collect a varied dataset for each class. Change backgrounds, lighting, distance, and object position; do not train on one nearly identical set of images.
+4. Train the model, test it with examples it has not seen, and add examples where it is confused.
+5. Export the model using TensorFlow.js and host/upload it.
+6. Paste the model URL into `MODEL_URL` in `sketch.js`.
+7. Run the page with VS Code Live Server and allow webcam access.
 
-## Set up your own model
+## Interaction
+The model's predicted class determines the color family of the visual field. Confidence influences particle size and movement. The viewer can change the input by presenting different objects or gestures to the camera.
 
-1. Open [Teachable Machine](https://teachablemachine.withgoogle.com/).
-2. Create an Image Project.
-3. Choose at least two meaningful classes. Collect varied examples for each class; do not rely on only one background, lighting condition, or object position.
-4. Train and test the model. Add examples if it confuses the classes.
-5. Export the model using TensorFlow.js and choose the hosted/upload option.
-6. Copy the model URL and paste it into `MODEL_URL` near the top of `sketch.js`. Keep the trailing slash.
-7. Open `index.html` with VS Code Live Server and allow webcam access.
+## Reflection prompts
+- What classes did you train, and why?
+- How many examples did you collect for each class?
+- Who or what appears in your training images?
+- When does the model misclassify an input?
+- Does the model work differently with changes in lighting, distance, background, or camera angle?
+- What does the confidence score tell you—and what does it not tell you?
 
-## Before submitting
-
-- [ ] Train and test your own model.
-- [ ] Add your model URL to the sketch.
-- [ ] Explain what classes you trained and how you collected examples.
-- [ ] Describe how the model's output changes the sketch.
-- [ ] Discuss errors, bias, or situations where the model is uncertain.
+## Submission checklist
+- [ ] Train your own model.
+- [ ] Add the hosted model URL.
+- [ ] Test all classes in the browser.
 - [ ] Include a screenshot or short video.
-- [ ] Cite Teachable Machine and any datasets or references you used.
+- [ ] Explain your training process, inspiration, and how to interact with the program.
+- [ ] Discuss limitations and possible bias.
+- [ ] Cite Teachable Machine and any datasets or references.
 
-## AI assistance disclosure
-
-This starter interface was created with AI assistance. You must train your own model, review and revise the sketch, understand the classification loop, and follow your instructor's attribution requirements.
+## AI assistance
+This starter code and documentation were drafted with AI assistance. Understand the model-loading and classification loop, revise the code, and acknowledge assistance according to the course requirements.
