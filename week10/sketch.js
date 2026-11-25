@@ -1,5 +1,5 @@
 // Week 10 — Gestural Control
-// Concept: Gesture Garden. Hand position and a pinch gesture shape a growing field.
+// Gesture Garden: hand position and a pinch gesture shape a growing field.
 
 let video;
 let handPose;
@@ -13,18 +13,16 @@ function setup() {
   canvas.parent("sketch");
   colorMode(HSB, 360, 100, 100, 1);
 
-  // The mirrored camera makes the interaction feel like looking in a mirror.
-  video = createCapture(VIDEO, { flipped: true });
+  // Keep the camera fixed in front of the user so hand movement is easy to read.
+  video = createCapture(VIDEO);
   video.size(640, 480);
   video.hide();
-
-  // ml5 v1 uses async model constructors with p5.js 2.x.
   startHandTracking();
 }
 
 async function startHandTracking() {
   try {
-    handPose = await ml5.handPose({ flipped: true });
+    handPose = await ml5.handPose();
     handPose.detectStart(video, gotHands);
     modelReady = true;
     statusMessage = "Show one hand to begin";
@@ -38,10 +36,18 @@ function gotHands(results) {
   hands = results;
 }
 
+function getLandmark(hand, index) {
+  // HandPose returns 21 landmarks. Index 4 is the thumb tip; index 8 is the index tip.
+  if (hand.keypoints && hand.keypoints[index]) return hand.keypoints[index];
+  if (hand.landmarks && hand.landmarks[index]) {
+    return { x: hand.landmarks[index][0], y: hand.landmarks[index][1] };
+  }
+  return null;
+}
+
 function draw() {
   background(224, 38, 10);
 
-  // Keep the webcam visible but subdued so the generated drawing remains legible.
   push();
   tint(255, 38);
   image(video, 0, 0, width, height);
@@ -49,32 +55,36 @@ function draw() {
 
   const hand = hands.length > 0 ? hands[0] : null;
   if (hand) {
-    const indexTip = hand.index_finger_tip;
-    const thumbTip = hand.thumb_tip;
-    const handX = map(indexTip.x, 0, 640, 0, width);
-    const handY = map(indexTip.y, 0, 480, 0, height);
-    const pinchDistance = dist(indexTip.x, indexTip.y, thumbTip.x, thumbTip.y);
+    const indexTip = getLandmark(hand, 8);
+    const thumbTip = getLandmark(hand, 4);
 
-    // Three mappings: finger X steers rotation, finger Y changes hue,
-    // and thumb-index distance controls bloom size and whether new blooms grow.
-    const rotation = map(handX, 0, width, -0.8, 0.8);
-    const hue = map(handY, 0, height, 35, 300);
-    const bloomSize = map(constrain(pinchDistance, 12, 150), 12, 150, 72, 18);
+    if (indexTip && thumbTip) {
+      const handX = map(indexTip.x, 0, 640, 0, width);
+      const handY = map(indexTip.y, 0, 480, 0, height);
+      const pinchDistance = dist(indexTip.x, indexTip.y, thumbTip.x, thumbTip.y);
 
-    drawGestureField(handX, handY, rotation, hue, bloomSize);
+      // X controls rotation, Y controls hue, and pinch distance controls bloom size.
+      const rotation = map(handX, 0, width, -0.8, 0.8);
+      const hue = map(handY, 0, height, 35, 300);
+      const bloomSize = map(constrain(pinchDistance, 12, 150), 12, 150, 72, 18);
 
-    if (pinchDistance < 48 && frameCount % 5 === 0) {
-      blooms.push(new Bloom(handX, handY, hue, bloomSize));
+      drawGestureField(handX, handY, rotation, hue, bloomSize);
+
+      if (pinchDistance < 48 && frameCount % 5 === 0) {
+        blooms.push(new Bloom(handX, handY, hue, bloomSize));
+      }
+
+      noFill();
+      stroke(45, 20, 100, 0.9);
+      strokeWeight(2);
+      circle(handX, handY, 28);
+      line(handX - 18, handY, handX + 18, handY);
+      line(handX, handY - 18, handX, handY + 18);
+
+      statusMessage = pinchDistance < 48 ? "Pinch detected · growing" : "Move and explore · pinch to grow";
+    } else {
+      statusMessage = "Hand found · waiting for landmarks";
     }
-
-    noFill();
-    stroke(45, 20, 100, 0.9);
-    strokeWeight(2);
-    circle(handX, handY, 28);
-    line(handX - 18, handY, handX + 18, handY);
-    line(handX, handY - 18, handX, handY + 18);
-
-    statusMessage = pinchDistance < 48 ? "Pinch detected · growing" : "Move and explore · pinch to grow";
   } else if (modelReady) {
     statusMessage = "Show one hand to begin";
   }
@@ -144,7 +154,7 @@ class Bloom {
 function drawInterface() {
   noStroke();
   fill(225, 35, 8, 0.72);
-  rect(14, height - 58, 390, 42, 8);
+  rect(14, height - 58, 420, 42, 8);
   fill(42, 12, 98);
   textSize(14);
   text(statusMessage, 26, height - 32);
